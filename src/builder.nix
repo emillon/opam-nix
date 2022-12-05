@@ -329,10 +329,13 @@ resolveEnv: rec {
         ];
 
         patchDunePackagePhase = ''
+          echo "Patching dune-package"
           dune_package="$lib"/''${pname}/dune-package
 
           if [[ -f "$dune_package" ]] ; then
-            sed -i s,doc/''${pname},share/doc/''${pname}, "$dune_package"
+            substituteInPlace "$dune_package" doc/''${pname} share/doc/''${pname}
+          else
+            echo "Nothing to do"
           fi
         '';
 
