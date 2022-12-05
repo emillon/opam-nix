@@ -315,7 +315,7 @@ resolveEnv: rec {
           mkdir -p "$OCAMLFIND_DESTDIR" "$OCAMLFIND_DESTDIR/stublibs" "$out/bin"
           ${filterSectionInShell pkgdef'.install or [ ]}
           if [[ -e "''${pname}.install" ]]; then
-          ${opam-installer}/bin/opam-installer "''${pname}.install" --prefix="$out" --libdir="$OCAMLFIND_DESTDIR"
+          ${opam-installer}/bin/opam-installer "''${pname}.install" --prefix="$out" --libdir="$OCAMLFIND_DESTDIR" --docdir="$out"/share/doc
           fi
           runHook postInstall
         '';
