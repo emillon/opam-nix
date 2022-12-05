@@ -325,7 +325,12 @@ resolveEnv: rec {
           "cleanupPhase"
           "nixSupportPhase"
           "removeOcamlReferencesPhase"
+          "patchDunePackagePhase"
         ];
+
+        patchDunePackagePhase = ''
+          sed -i s,doc/''${pname},share/doc/''${pname}, "$lib"/''${pname}/dune-package
+        '';
 
         fixDumbPackagesPhase = ''
           # Some packages like to install to %{prefix}%/lib instead of %{lib}%
