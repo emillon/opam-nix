@@ -329,7 +329,11 @@ resolveEnv: rec {
         ];
 
         patchDunePackagePhase = ''
-          sed -i s,doc/''${pname},share/doc/''${pname}, "$lib"/''${pname}/dune-package
+          dune_package="$lib"/''${pname}/dune-package
+
+          if [[ -f "$dune_package" ]] ; then
+            sed -i s,doc/''${pname},share/doc/''${pname}, "$dune_package"
+          fi
         '';
 
         fixDumbPackagesPhase = ''
