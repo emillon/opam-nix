@@ -333,11 +333,13 @@ resolveEnv: rec {
           echo "Patching dune-package $dune_package"
 
           if [[ -f "$dune_package" ]] ; then
-            substituteInPlace "$dune_package" --replace doc/''${pname} share/doc/''${pname}
+            substituteInPlace "$dune_package" --replace ../.. ../../../../..
           else
             echo "Nothing to do"
           fi
         '';
+
+        forceShare = [ "info" ]
 
         fixDumbPackagesPhase = ''
           # Some packages like to install to %{prefix}%/lib instead of %{lib}%
