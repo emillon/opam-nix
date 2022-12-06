@@ -329,7 +329,7 @@ resolveEnv: rec {
         ];
 
         patchDunePackagePhase = ''
-          dune_package=''${lib}/''${pname}/dune-package
+          dune_package="$out"/lib/ocaml/''${opam__ocaml__version}/site-lib/''${pname}/dune-package
           echo "Patching dune-package $dune_package"
 
           if [[ -f "$dune_package" ]] ; then
