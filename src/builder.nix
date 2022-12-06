@@ -339,7 +339,7 @@ resolveEnv: rec {
           fi
         '';
 
-        forceShare = [ "info" ]
+        forceShare = [ "info" ];
 
         fixDumbPackagesPhase = ''
           # Some packages like to install to %{prefix}%/lib instead of %{lib}%
