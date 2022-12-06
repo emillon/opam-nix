@@ -333,7 +333,7 @@ resolveEnv: rec {
           echo "Patching dune-package $dune_package"
 
           if [[ -f "$dune_package" ]] ; then
-            substituteInPlace "$dune_package" doc/''${pname} share/doc/''${pname}
+            substituteInPlace "$dune_package" --replace doc/''${pname} share/doc/''${pname}
           else
             echo "Nothing to do"
           fi
